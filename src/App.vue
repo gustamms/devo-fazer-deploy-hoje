@@ -21,7 +21,18 @@ export default {
   },
   methods: {
       requestApi: function() {
-        axios.post('http://shouldideploy.today/api?tz=America/Sao_Paulo')
+        axios.get('https://shouldideploy.today/api?tz=America/Sao_Paulo',
+          {
+            headers: {
+              'Access-Control-Allow-Credentials': 'true',
+              'Access-Control-Allow-Origin': '*',
+              'Content-type': 'application/json',
+              'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+              'Access-Control-Allow-Headers':
+              'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+            }
+          }
+        )
         .then((response) =>{
           console.log(response);
         })
